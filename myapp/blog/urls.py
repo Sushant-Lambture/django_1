@@ -22,6 +22,9 @@ urlpatterns = [
     path('',views.home,name='home'),
     path('about',views.about,name='about'),
     path('empform',views.empform,name='empform'),
-    path('empdata', views.empdata, name='empdata')
+    path('empdata', views.empdata, name='empdata'),
+    path('more',views.more,name='more'),
+    path('moredata',views.moredata,name='moredata'),
+    path('empupdate',views.empupdate,name='empupdate')
 
 ]
