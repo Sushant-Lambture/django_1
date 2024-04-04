@@ -1,0 +1,73 @@
+<!--Image step 3-->
+{% extends 'blog/master.html' %}
+
+{% block title %} Product {% endblock %}
+
+{% block cont %}
+<div class="container">
+    <!--        if we are uploading files then method should be POST-->
+<!--        enctype is required for file uploading-->
+<!--        csrf-token ==== this should be used when method is POST-->
+    <form method="post" enctype="multipart/form-data" action="upload">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label>Pname:</label>
+            <input type="text" name="pname" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>Pcat:</label>
+            <input type="text" name="pcat" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>Psubcat:</label>
+            <input type="text" name="psubcat" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>Pprice:</label>
+            <input type="text" name="pprice" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>Date:</label>
+            <input type="date" name="pdate" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>Image:</label>
+            <input type="file" name="file" class="form-control">
+        </div>
+
+        <input type="submit" name="sub" value="Submit" class="btn btn-primary">
+        <input type="submit" name="sub" value="Display" class="btn btn-primary">
+    </form>
+</div>
+
+<!--Image step 6-->
+
+<div class="container">
+    <table class="table">
+        <tr>
+            <th>Pname</th>
+            <th>Pcat</th>
+            <th>Psubcat</th>
+            <th>Pprice</th>
+            <th>Pdate</th>
+            <th>Image</th>
+        </tr>
+        {% for p in data %}
+           <tr>
+               <td>{{p.pname}}</td>
+               <td>{{p.pcat}}</td>
+               <td>{{p.psubcat}}</td>
+               <td>{{p.pprice}}</td>
+               <td>{{p.pdate}}</td>
+               <td><img src="/media/{{p.pimage}}" width="200" height="200" /></td>
+           </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

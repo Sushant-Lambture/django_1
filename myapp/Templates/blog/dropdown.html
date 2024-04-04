@@ -1,16 +1,21 @@
 {% extends 'blog/master.html' %}
 
-{% block title %} More {% endblock %}
+{% block title %} Dropdown {% endblock %}
 
 {% block cont %}
 <div  class='container'>
     <div class="row">
        <div>
            <h1>{{msg}}</h1>
-           <form method="get" action="moredata">
+           <form method="get" action="dropdata">
                <div class="form-group">
                    <label>Eid:</label>
-                   <input type="text" name="eid" class="form-control">
+<!--                   <input type="text" name="eid" class="form-control">-->
+                   <select name="eid" class="form-control">
+                       {% for d in data1 %}
+                          <option value="{{d.eid}}">{{d.eid}}</option>
+                       {% endfor %}
+                   </select>
                </div>
 
                <input type="submit" name="sub" value="Display" class="btn btn-primary">
